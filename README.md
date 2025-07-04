@@ -1,128 +1,124 @@
 
-# 🧠 Mental Health Screening Chatbot (PHQ-9 & GAD-7)
 
-A terminal-based chatbot built with **LangChain**, **Gemini API**, and **FAISS** that screens users for signs of **depression** and **anxiety** using clinically validated tools (**PHQ-9**, **GAD-7**) and **DSM-5 criteria** as reference.
+# 🧠 Mental Health Chatbot (PHQ-9 & GAD-7 Assessment)
 
----
-
-## 📌 Features
-
-- Prompts user with PHQ-9 and GAD-7 clinical questions
-- Uses Gemini LLM to analyze responses kindly and intelligently
-- References official criteria from DSM-5 to assess severity
-- Runs locally with no frontend required
-- Easily extendable to add GUI, logging, scoring, or web interface
+This Python chatbot helps assess symptoms of **depression** and **anxiety** using clinically recognized tools: **PHQ-9** and **GAD-7**. It uses Google’s **Gemini Pro (via LangChain)** to provide AI-enhanced analysis based on user responses and a PDF reference document.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Features
 
-### 1. Clone the repository
+- Asks **PHQ-9** and **GAD-7** mental health questions
+- Accepts **natural English responses** (like "yes", "no", "a little")
+- Converts them into clinical scoring (0–3 scale)
+- Analyzes responses using a **Gemini-powered RetrievalQA agent**
+- Uses a **PDF file as vector knowledge base**
+- Designed using **LangGraph**, **LangChain**, and **FAISS**
 
-```bash
-git clone https://github.com/yourusername/mental-health-chatbot.git
-cd mental-health-chatbot
+---
+
+## 📂 Project Structure
+
+```
+
+mental\_health\_bot/
+│
+├── data/
+│   └── MentalHealthSummary.pdf       # Your reference document
+│
+├── faiss\_index/                      # Auto-generated vector store
+│
+├── prompts/
+│   └── phq\_gad\_template.py          # Contains PHQ-9 & GAD-7 question lists
+│
+├── embeddings.py                    # Loads & embeds the PDF into FAISS
+├── agent\_logic.py                   # Chat agent logic with LangGraph
+├── main.py                          # Entry point: runs the chatbot
+├── .env                             # Stores your Gemini API key
+├── .gitignore
+└── README.md
+
 ````
 
-### 2. Install dependencies
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone and navigate into the project
+
+```bash
+git clone https://github.com/your-username/mental_health_bot.git
+cd mental_health_bot
+````
+
+### 2. Create a virtual environment and activate it
+
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-<details>
-<summary>📦 If no <code>requirements.txt</code>, manually install:</summary>
+### 4. Add your Gemini API key
+
+Create a `.env` file in the root folder:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+---
+
+## 🧠 How to Run
+
+### Step 1: Embed the reference PDF
+
+Make sure your `MentalHealthSummary.pdf` is in the `data/` folder, then run:
 
 ```bash
-pip install langchain langchain-community langchain-google-genai \
-             google-generativeai faiss-cpu sentence-transformers \
-             pypdf
+python embeddings.py
 ```
 
-</details>
-
----
-
-### 3. Set your API keys
-
-#### 🌐 Gemini (Chat + Embeddings)
-
-Option 1: Use **Google Cloud service account JSON** (recommended for embeddings):
+### Step 2: Run the chatbot
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account.json"
+python main.py
 ```
 
-Option 2: If using only chat (not embeddings):
+You will be asked PHQ-9 and GAD-7 questions. Answer using **natural language** like:
 
-```bash
-export GOOGLE_API_KEY="your-gemini-api-key"
+> a little
+> yes
+> not at all
+> nearly every day
+
+The bot will then analyze your responses using Gemini AI and report whether you likely have depression, anxiety, both, or neither.
+
+---
+
+## ✅ Example Responses
+
+```
+[PHQ-9] Feeling down, depressed, or hopeless?
+> a little
+
+[GAD-7] Feeling nervous, anxious, or on edge?
+> nearly every day
 ```
 
 ---
 
-### 4. Add Reference Document
+## 🛡️ Disclaimer
 
-Put this file (already included or generate it yourself) in the `documents/` folder:
-
-```
-documents/dsm5_excerpt.pdf
-```
-
-This should include summaries of:
-
-* PHQ-9
-* GAD-7
-* DSM-5 Diagnostic Criteria
-
----
-
-### 5. Run the chatbot
-
-```bash
-python mental_health_chatbot.py
-```
-
-You'll be prompted with 16 clinical questions and receive a kind, supportive assessment.
-
----
-
-## 📁 File Structure
-
-```
-mental-health-chatbot/
-│
-├── documents/
-│   └── dsm5_excerpt.pdf         # Reference doc for PHQ-9, GAD-7, DSM-5
-│
-├── mental_health_chatbot.py    # Main chatbot logic
-├── README.md                   # This file
-└── requirements.txt            # (optional) pip install deps
-```
-
----
-
-## 🧠 Screening Tools Used
-
-| Tool  | Purpose                   |
-| ----- | ------------------------- |
-| PHQ-9 | Depression Screening      |
-| GAD-7 | Anxiety Screening         |
-| DSM-5 | Clinical Diagnostic Guide |
-
----
-
-## 📄 Disclaimer
-
-This tool is **for educational and informational purposes only**.
-It is **not a replacement for clinical diagnosis**.
-Please consult a licensed mental health professional for personalized support.
-
----
-
-## 🤝 Contributing
-
-Feel free to open issues or submit pull requests to improve this chatbot, enhance UX, or add model support.
+This tool is for **educational and research purposes only**. It does **not replace professional medical advice**. Always consult a mental health professional for clinical evaluation and support.
 
 ---
 
