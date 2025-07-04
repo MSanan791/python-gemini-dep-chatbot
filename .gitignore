@@ -57,3 +57,4 @@ documents/*.pdf
 *.swp
 *.tmp
 
+.env
