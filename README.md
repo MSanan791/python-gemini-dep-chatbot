@@ -126,10 +126,5 @@ Feel free to open issues or submit pull requests to improve this chatbot, enhanc
 
 ---
 
-## 📜 License
-
-MIT License © 2025 \[Your Name]
-
-```
 
 

@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Mac OS / Windows / Linux system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Python dependency/environment files
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Logs and reports
+*.log
+*.out
+
+# Environment variables / API keys / credentials
+.env
+*.env
+credentials.json
+*.pem
+*.key
+token.json
+GOOGLE_APPLICATION_CREDENTIALS.json
+
+# Cache
+.cache/
+*.cache
+*.faiss
+
+# Document outputs
+documents/*.pdf
+
+# Misc
+*.bak
+*.swp
+*.tmp
+
