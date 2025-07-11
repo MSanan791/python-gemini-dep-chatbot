@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
+*.pyd
+*.so
 
 # Virtual environment
 .venv/
@@ -9,41 +12,57 @@ env/
 venv/
 ENV/
 
-# Environment variables
+# Environment variables / API keys / credentials
 .env
 .env.*
+*.env
+credentials.json
+*.pem
+*.key
+token.json
+GOOGLE_APPLICATION_CREDENTIALS.json
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints
 
-# VS Code settings
+# IDE files
 .vscode/
+.idea/
+*.code-workspace
 
-# Pytest cache
+# Pytest and MyPy cache
 .pytest_cache/
-
-# MyPy cache
 .mypy_cache/
 
-# MacOS
+# MacOS / Windows / Linux system files
 .DS_Store
-
-# Windows
 Thumbs.db
 desktop.ini
+ehthumbs.db
+Icon?
+Desktop.ini
 
-# Logs
+# Logs and reports
 *.log
+*.out
 
-# LangChain / Chroma / FAISS / Vectorstores
+# Chroma / FAISS / LangChain / vectorstores
 chroma_db/
-*.pkl
-*.faiss
-*.pdf # if temporary reference docs
-
-# pycache from LangChain graphs
 langgraph_logs/
 langgraph_cache/
+*.faiss
+*.pkl
+*.pdf  # if temporary
+
+# Misc
+*.bak
+*.swp
+*.tmp
+
+# Egg info
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Test files
 test_input.py
