@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
 *.pyd
 *.so
@@ -11,32 +12,9 @@ env/
 venv/
 ENV/
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# Mac OS / Windows / Linux system files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-Desktop.ini
-
-# IDE files
-.vscode/
-.idea/
-*.code-workspace
-
-# Python dependency/environment files
-*.egg-info/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Logs and reports
-*.log
-*.out
-
 # Environment variables / API keys / credentials
 .env
+.env.*
 *.env
 credentials.json
 *.pem
@@ -44,16 +22,47 @@ credentials.json
 token.json
 GOOGLE_APPLICATION_CREDENTIALS.json
 
-# Cache
-.cache/
-*.cache
-*.faiss
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
 
-# Document outputs
-documents/*.pdf
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Pytest and MyPy cache
+.pytest_cache/
+.mypy_cache/
+
+# MacOS / Windows / Linux system files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Logs and reports
+*.log
+*.out
+
+# Chroma / FAISS / LangChain / vectorstores
+chroma_db/
+langgraph_logs/
+langgraph_cache/
+*.faiss
+*.pkl
+*.pdf  # if temporary
 
 # Misc
 *.bak
 *.swp
 *.tmp
 
+# Egg info
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test files
+test_input.py
